@@ -1,5 +1,5 @@
+from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
 from dotenv import load_dotenv
-from llama_index import VectorStoreIndex, SimpleDirectoryReader
 import os
 
 # Load environment variables from .env file
@@ -16,8 +16,11 @@ else:
 def main():
     documents = SimpleDirectoryReader("data").load_data()
     index = VectorStoreIndex.from_documents(documents)
-    print(index)
+    query_engine = index.as_query_engine()
+    answer  = query_engine.query("What is my higest degree?")
+    print(answer)
 
 
 if __name__ == "__main__":
     main()
+
