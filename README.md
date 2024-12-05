@@ -1,0 +1,4 @@
+## OPENAI KEY
+```
+OPENAI_API_KEY=
+```
